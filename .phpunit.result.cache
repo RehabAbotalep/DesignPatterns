@@ -1,1 +1,0 @@
-{"version":1,"defects":{"StrategyTest::testCanUseHashEncrypt":4},"times":{"StrategyTest::testCanUseHashEncrypt":0.001,"StrategyTest::testCanUseMd5Encryption":0.001}}
