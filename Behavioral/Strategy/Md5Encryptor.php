@@ -3,8 +3,7 @@
 
 namespace Behavioral\Strategy;
 
-
-class Md5Encrypt implements StrategyInterface
+class Md5Encryptor implements Encryptor
 {
 
     const TYPE = "Md5";

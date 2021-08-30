@@ -1,7 +1,8 @@
 <?php
 namespace Behavioral\Strategy;
 
-interface StrategyInterface
+
+interface Encryptor
 {
     public function Encrypt(string $data): array;
 }

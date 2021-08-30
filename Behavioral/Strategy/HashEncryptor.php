@@ -4,7 +4,7 @@
 namespace Behavioral\Strategy;
 
 
-class HashEncrypt implements StrategyInterface
+class HashEncryptor implements Encryptor
 {
     public const TYPE = "Hash";
 
