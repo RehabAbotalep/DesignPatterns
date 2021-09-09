@@ -32,7 +32,7 @@ class StatisticsDisplay implements Observer, Display
             ." " .$this->pressure;
     }
 
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }

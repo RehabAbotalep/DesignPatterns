@@ -31,7 +31,7 @@ class GeneralDisplay implements Observer, Display
         $this->state = "Current conditions: " . $this->temp
             . "F degrees and " .$this->humidity . "% humidity";
     }
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }

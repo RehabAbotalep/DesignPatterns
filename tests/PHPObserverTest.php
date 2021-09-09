@@ -27,7 +27,7 @@ class PHPObserverTest extends TestCase
         $this->restaurant->attach($this->kitchen);
     }
 
-    public function testAllObserversWillBeNotifiedWhenNewOrderIsComming()
+    public function testAllObserversWillBeNotifiedWhenNewOrderIsComing()
     {
         $this->restaurant->addNewOrder();
         self::assertEquals("Cashier is ready for order number 1", $this->cashier->getState());
