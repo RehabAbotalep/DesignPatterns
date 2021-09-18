@@ -17,21 +17,21 @@ class DecoratorTest extends TestCase
 
     public function testCanGetEspressoComponentWithOutAnyDecorators()
     {
-        self::assertEquals($this->espressoCoffee->cost(), 2);
-        self::assertEquals($this->espressoCoffee->getDescription(), 'Espresso');
+        self::assertEquals(2, $this->espressoCoffee->cost());
+        self::assertEquals('Espresso', $this->espressoCoffee->getDescription());
     }
 
     public function testCanGetEspressoComponentWithSingleMochaDecorator()
     {
         $espressoSingleMocha = new Mocha($this->espressoCoffee);
-        self::assertEquals($espressoSingleMocha->cost(), 4);
-        self::assertEquals($espressoSingleMocha->getDescription(), 'Espresso ,Mocha');
+        self::assertEquals(4, $espressoSingleMocha->cost());
+        self::assertEquals('Espresso ,Mocha', $espressoSingleMocha->getDescription());
     }
 
     public function testCanGetEspressoComponentWithDoubleMochaDecorator()
     {
         $espressoDoubleMocha = new Mocha(new Mocha($this->espressoCoffee));
-        self::assertEquals($espressoDoubleMocha->cost(), 6);
-        self::assertEquals($espressoDoubleMocha->getDescription(), 'Espresso ,Mocha ,Mocha');
+        self::assertEquals(6, $espressoDoubleMocha->cost());
+        self::assertEquals('Espresso ,Mocha ,Mocha', $espressoDoubleMocha->getDescription());
     }
 }
