@@ -1,6 +1,5 @@
 <?php
 
-
 use Behavioral\Command\GarageDoor;
 use Behavioral\Command\GarageDoorCloseCommand;
 use Behavioral\Command\GarageDoorOpenCommand;
@@ -17,26 +16,26 @@ use PHPUnit\Framework\TestCase;
 class CommandTest extends TestCase
 {
     private RemoteControl $remote;
-    private GarageDoorOpenCommand $garageDoorOpen;
-    private GarageDoorCloseCommand $garageDoorClose;
-    private LightOnCommand $lightOn;
-    private LightOffCommand $lightOff;
+    private GarageDoorOpenCommand $garageDoorOpenCommand;
+    private GarageDoorCloseCommand $garageDoorCloseCommand;
+    private LightOnCommand $lightOnCommand;
+    private LightOffCommand $lightOffCommand;
 
     protected function setUp(): void
     {
         $this->remote = new RemoteControl();
         $garageDoor = new GarageDoor();
-        $this->garageDoorOpen = new GarageDoorOpenCommand($garageDoor);
-        $this->garageDoorClose = new GarageDoorCloseCommand($garageDoor);
+        $this->garageDoorOpenCommand = new GarageDoorOpenCommand($garageDoor);
+        $this->garageDoorCloseCommand = new GarageDoorCloseCommand($garageDoor);
 
         $light = new Light();
-        $this->lightOn = new LightOnCommand($light);
-        $this->lightOff = new LightOffCommand($light);
+        $this->lightOnCommand = new LightOnCommand($light);
+        $this->lightOffCommand = new LightOffCommand($light);
     }
 
     public function testCanSetOnAndOffLightCommandsOnTheFirstSlot()
     {
-        $this->remote->setCommand(0, $this->lightOn, $this->lightOff);
+        $this->remote->setCommand(0, $this->lightOnCommand, $this->lightOffCommand);
         self::assertEquals("Light is on ", $this->remote->onButtonWasPushed(0));
         self::assertEquals("Light is off ", $this->remote->offButtonWasPushed(0));
 
@@ -44,7 +43,7 @@ class CommandTest extends TestCase
 
     public function testCanSetOnAndOffGarageDoorCommandsOnTheSecondSlot()
     {
-        $this->remote->setCommand(1, $this->garageDoorOpen, $this->garageDoorClose);
+        $this->remote->setCommand(1, $this->garageDoorOpenCommand, $this->garageDoorCloseCommand);
         self::assertEquals("Garage door is opened ", $this->remote->onButtonWasPushed(1));
         self::assertEquals("Garage door is closed ", $this->remote->offButtonWasPushed(1));
     }
@@ -63,7 +62,7 @@ class CommandTest extends TestCase
 
     public function testCanUndoOnLightCommand()
     {
-        $this->remote->setCommand(0, $this->lightOn, $this->lightOff);
+        $this->remote->setCommand(0, $this->lightOnCommand, $this->lightOffCommand);
 
         self::assertEquals("Light is on ", $this->remote->onButtonWasPushed(0));
         self::assertEquals("Light is off ", $this->remote->undoButtonWasPushed());
@@ -71,7 +70,7 @@ class CommandTest extends TestCase
 
     public function testCanUndoOffLightCommand()
     {
-        $this->remote->setCommand(0, $this->lightOn, $this->lightOff);
+        $this->remote->setCommand(0, $this->lightOnCommand, $this->lightOffCommand);
 
         self::assertEquals("Light is off ", $this->remote->offButtonWasPushed(0));
         self::assertEquals("Light is on ", $this->remote->undoButtonWasPushed());
@@ -79,8 +78,8 @@ class CommandTest extends TestCase
 
     public function testMacroCommand()
     {
-        $partyOn = [$this->garageDoorOpen, $this->lightOn];
-        $partyOff = [$this->garageDoorClose, $this->lightOff];
+        $partyOn = [$this->garageDoorOpenCommand, $this->lightOnCommand];
+        $partyOff = [$this->garageDoorCloseCommand, $this->lightOffCommand];
 
         $partyOnMacro = new MacroCommand($partyOn);
         $partyOffMacro = new MacroCommand($partyOff);

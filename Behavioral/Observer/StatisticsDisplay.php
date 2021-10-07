@@ -20,8 +20,8 @@ class StatisticsDisplay implements Observer, Display
 
     public function update(float $temp, float $humidity, float $pressure)
     {   /** These values only just for test */
-        $this->temp = $temp*2;
-        $this->humidity = $humidity*2;
+        $this->temp = $temp * 2;
+        $this->humidity = $humidity * 2;
         $this->pressure = $pressure;
         $this->display();
     }

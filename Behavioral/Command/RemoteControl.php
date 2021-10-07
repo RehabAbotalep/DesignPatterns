@@ -4,7 +4,6 @@
 namespace Behavioral\Command;
 
 
-use Behavioral\PHPObserver\Restaurant;
 
 class RemoteControl
 {

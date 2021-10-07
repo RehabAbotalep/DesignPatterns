@@ -17,8 +17,8 @@ class SimpleCommandTest extends TestCase
     {
         $this->remote = new SimpleRemoteControl();
         $light = new Light();
-        $lightOn = new LightOnCommand($light);
-        $this->remote->setCommand($lightOn);
+        $lightOnCommand = new LightOnCommand($light);
+        $this->remote->setCommand($lightOnCommand);
     }
 
     public function testCanTurnOnLight()
@@ -29,8 +29,8 @@ class SimpleCommandTest extends TestCase
     public function testCanOpenGarageDoor()
     {
         $garageDoor = new GarageDoor();
-        $openGarage = new GarageDoorOpenCommand($garageDoor);
-        $this->remote->setCommand($openGarage);
+        $openGarageCommand = new GarageDoorOpenCommand($garageDoor);
+        $this->remote->setCommand($openGarageCommand);
         self::assertEquals("Garage door is opened ", $this->remote->buttonWasPressed());
     }
 }

@@ -6,14 +6,14 @@ namespace Behavioral\Command;
 
 class MacroCommand implements Command
 {
-    public $commands;
+    public array $commands;
 
     public function __construct(array $commands)
     {
         $this->commands = $commands;
     }
 
-    public function execute()
+    public function execute(): string
     {
         $output = '';
         for($i=0; $i<count($this->commands); $i++)
@@ -23,7 +23,7 @@ class MacroCommand implements Command
         return $output;
     }
 
-    public function undo()
+    public function undo(): string
     {
         $output = '';
         for($i=0; $i<count($this->commands); $i++)
