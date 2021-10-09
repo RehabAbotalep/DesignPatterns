@@ -7,7 +7,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 class SingletonTest extends TestCase
 {
-    public function testTheSame()
+    public function testOneAndOnlyOneObjectIsInstantiatedFromSingletonClass()
     {
         $obj1 = Singleton::getInstance();
         $obj2 = Singleton::getInstance();
