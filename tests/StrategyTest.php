@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-
 use Behavioral\Strategy\Context;
 use Behavioral\Strategy\HashEncryptor;
 use Behavioral\Strategy\Md5Encryptor;

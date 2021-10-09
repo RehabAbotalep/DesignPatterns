@@ -1,9 +1,8 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Creational\Singleton\Singleton;
 use PHPUnit\Framework\TestCase;
-
-require_once __DIR__ . '/../vendor/autoload.php';
 
 class SingletonTest extends TestCase
 {

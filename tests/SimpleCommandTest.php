@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Behavioral\Command\GarageDoor;
 use Behavioral\Command\GarageDoorOpenCommand;
@@ -6,8 +7,6 @@ use Behavioral\Command\Light;
 use Behavioral\Command\LightOnCommand;
 use Behavioral\Command\SimpleRemoteControl;
 use PHPUnit\Framework\TestCase;
-
-require_once __DIR__ . '/../vendor/autoload.php';
 
 class SimpleCommandTest extends TestCase
 {
