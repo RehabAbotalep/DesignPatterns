@@ -18,6 +18,7 @@ class HomeTheaterFacade
     private Screen $screen;
     private TheaterLights $lights;
     private PopcornPopper $popper;
+    private array $output;
 
     public function __construct(Amplifier $amp, Tuner $tuner, DvdPlayer $dvd,
                                 Projector $projector, Screen $screen,
@@ -32,7 +33,8 @@ class HomeTheaterFacade
         $this->popper = $popper;
     }
 
-    public function watchMovie(string $movie)
+
+    public function watchMovie(string $movie): string
     {
           return "Get Ready to watch a movie ...".
               $this->popper->on().
@@ -46,7 +48,6 @@ class HomeTheaterFacade
               $this->amp->setVolume(5).
               $this->dvd->on().
               $this->dvd->play($movie);
-
     }
 
     public function endMovie(): string

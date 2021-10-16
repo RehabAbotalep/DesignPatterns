@@ -8,7 +8,7 @@ class TheaterLights
         return "Theater Ceiling Lights dimming to ".$percentage."%";
     }
 
-    public function on()
+    public function on(): string
     {
         return "Theater Ceiling Lights on";
     }
